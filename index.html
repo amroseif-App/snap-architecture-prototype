@@ -279,11 +279,13 @@
     }
     .hero-overlay{
       position:absolute;inset:0;z-index:1;
+      opacity:1;transition:opacity .9s ease;
       background:
         linear-gradient(100deg,rgba(7,18,31,.92) 0%,rgba(7,18,31,.74) 36%,rgba(7,18,31,.28) 67%,rgba(7,18,31,.06) 100%),
         radial-gradient(circle at 26% 48%,rgba(7,18,31,.34),transparent 48%),
         linear-gradient(0deg,rgba(7,18,31,.56) 0%,rgba(7,18,31,.08) 44%,rgba(7,18,31,.16) 100%);
     }
+    .hero--intro .hero-overlay{opacity:0}
     html[dir="rtl"] .hero-overlay{
       background:
         linear-gradient(260deg,rgba(7,18,31,.92) 0%,rgba(7,18,31,.74) 36%,rgba(7,18,31,.28) 67%,rgba(7,18,31,.06) 100%),
@@ -307,6 +309,12 @@
     .hero .btn{min-width:166px;border-radius:0;font-weight:600;letter-spacing:.08em}
     .hero .btn-ghost{border-color:rgba(242,239,230,.4);color:var(--vellum)}
     .hero .btn-ghost:hover{box-shadow:0 6px 0 0 var(--redline-2);border-color:var(--redline-2)}
+
+    /* Intro sequence: first full pass through the hero films plays clean,
+       full-screen, with no copy — text appears once and stays fixed from
+       the second pass onward. */
+    .hero-copy,.hero-titleblock{transition:opacity .9s ease,transform .9s ease}
+    .hero--intro .hero-copy,.hero--intro .hero-titleblock{opacity:0;pointer-events:none;transform:translateY(14px)}
 
     .stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:760px;border-top:1px solid rgba(242,239,230,.24)}
     .stat{padding:16px 18px 0 0;border-left:1px solid rgba(242,239,230,.14)}
@@ -1046,7 +1054,7 @@ html[dir="rtl"] .project-popup button{text-align:right}
 
   <main>
     
-    <section class="hero" id="home">
+    <section class="hero hero--intro" id="home">
       <div class="hero-slides" id="heroSlides">
         <div class="hero-slide active">
           <video class="hero-video" id="heroVideo0" muted playsinline autoplay preload="auto"
@@ -2320,8 +2328,21 @@ if (typeof L === "undefined") {
       upcomingVideo.load();
       upcomingVideo.dataset.prepared="true";
     }
+    // First full pass (all 3 films) plays with no text overlay; starting the
+    // second time slide 1 comes back around, the copy appears and stays put.
+    let heroIntroActive=true;
+    let heroIntroTransitions=0;
+    function completeHeroIntro(){
+      if(!heroIntroActive) return;
+      heroIntroActive=false;
+      document.querySelector(".hero")?.classList.remove("hero--intro");
+    }
     function showHeroSlide(index){
       clearHeroTimer();
+      if(heroIntroActive){
+        heroIntroTransitions++;
+        if(heroIntroTransitions>=heroSlides.length) completeHeroIntro();
+      }
       const outgoingIndex=heroSlideIndex;
       const outgoingSlide=heroSlides[outgoingIndex];
       const currentVideo = outgoingSlide?.querySelector("video");
