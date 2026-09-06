@@ -279,7 +279,7 @@
     }
     .hero-overlay{
       position:absolute;inset:0;z-index:1;
-      opacity:1;transition:opacity .9s ease;
+      opacity:1;transition:opacity 2s ease;
       background:
         linear-gradient(100deg,rgba(7,18,31,.92) 0%,rgba(7,18,31,.74) 36%,rgba(7,18,31,.28) 67%,rgba(7,18,31,.06) 100%),
         radial-gradient(circle at 26% 48%,rgba(7,18,31,.34),transparent 48%),
@@ -313,7 +313,7 @@
     /* Intro sequence: first full pass through the hero films plays clean,
        full-screen, with no copy — text appears once and stays fixed from
        the second pass onward. */
-    .hero-copy,.hero-titleblock{transition:opacity .9s ease,transform .9s ease}
+    .hero-copy,.hero-titleblock{transition:opacity 2s ease,transform 2s ease}
     .hero--intro .hero-copy,.hero--intro .hero-titleblock{opacity:0;pointer-events:none;transform:translateY(14px)}
 
     .stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:760px;border-top:1px solid rgba(242,239,230,.24)}
@@ -646,6 +646,9 @@
     }
     @media (prefers-reduced-motion:reduce){
       *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+      /* A plain opacity cross-fade is the accessible substitute for motion here,
+         not the total absence of one — keep the hero reveal fading instead of popping. */
+      .hero-copy,.hero-titleblock,.hero-overlay{transition:opacity 2s ease!important}
     }
 
     .about-card::after{
