@@ -1960,6 +1960,7 @@ if (typeof L === "undefined") {
     }
 
     let lastFocusedEl=null;
+    let modalOpenScrollY=0;
     function galleryImgError(img){
       const gallery=img.parentElement;
       img.remove();
@@ -1994,9 +1995,10 @@ if (typeof L === "undefined") {
       window.realLeafletMap?.closePopup();
       $("#projectModal").classList.add("show");
       $("#projectModal").setAttribute("aria-hidden","false");
+      modalOpenScrollY=window.scrollY;
       document.body.style.overflow="hidden";
       const closeBtn=$("#modalClose");
-      if(closeBtn) closeBtn.focus();
+      if(closeBtn) closeBtn.focus({preventScroll:true});
     }
 
     function closeModal(){
@@ -2006,8 +2008,18 @@ if (typeof L === "undefined") {
       $("#modalVideoFrame").innerHTML = "";
       $("#modalVideoWrap").classList.remove("show");
       document.body.style.overflow="";
-      if(lastFocusedEl && lastFocusedEl.focus){ lastFocusedEl.focus(); lastFocusedEl=null; }
+      if(lastFocusedEl && lastFocusedEl.focus){ lastFocusedEl.focus({preventScroll:true}); lastFocusedEl=null; }
+      window.scrollTo(0,modalOpenScrollY);
     }
+
+    // Some mobile browsers reset the page scroll when a native <video>
+    // enters/exits fullscreen while the background is scroll-locked —
+    // reassert the pre-modal scroll position if that happens.
+    ["fullscreenchange","webkitfullscreenchange"].forEach(evt=>{
+      document.addEventListener(evt,()=>{
+        if($("#projectModal").classList.contains("show")) window.scrollTo(0,modalOpenScrollY);
+      });
+    });
 
     let lightboxImages=[];
     let lightboxIndex=0;
