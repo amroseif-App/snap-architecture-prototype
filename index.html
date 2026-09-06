@@ -1933,6 +1933,8 @@ if (typeof L === "undefined") {
         video.controls = true;
         video.preload = "metadata";
         video.playsInline = true;
+        video.disablePictureInPicture = true;
+        video.setAttribute("disablepictureinpicture","");
 
         let index = 0;
         function tryNext(){
@@ -2005,6 +2007,9 @@ if (typeof L === "undefined") {
       closeImageLightbox();
       $("#projectModal").classList.remove("show");
       $("#projectModal").setAttribute("aria-hidden","true");
+      const modalVideo=$("#modalVideoFrame video");
+      if(modalVideo) modalVideo.pause();
+      if(document.pictureInPictureElement) document.exitPictureInPicture().catch(()=>{});
       $("#modalVideoFrame").innerHTML = "";
       $("#modalVideoWrap").classList.remove("show");
       document.body.style.overflow="";
