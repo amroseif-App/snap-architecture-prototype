@@ -1,0 +1,81 @@
+{
+  "sourceRoot": "C:\\Site-03\\NEW- AI VISUALIZATION",
+  "projects": [
+    {
+      "folder": "001-FOUKA",
+      "id": "fouka-bay-phase-1"
+    },
+    {
+      "folder": "002-MONTI GALALA",
+      "id": "monti-galala-chs"
+    },
+    {
+      "folder": "003-THE SHOR",
+      "id": "the-shore"
+    },
+    {
+      "folder": "004-THE VIEW",
+      "id": "the-view"
+    },
+    {
+      "folder": "005-ASTORIA",
+      "id": "astoria"
+    },
+    {
+      "folder": "006-MONTAZA QUATRO MALL",
+      "id": "montaza-quatro-mall"
+    },
+    {
+      "folder": "007-KATAMIA",
+      "id": "katamia"
+    },
+    {
+      "folder": "008-PORTO NEW CAIRO",
+      "id": "porto-new-cairo"
+    },
+    {
+      "folder": "009-PORTO 6 OCTOBAR",
+      "id": "porto-6th-of-october"
+    },
+    {
+      "folder": "010-MAXIM MALL",
+      "id": "maxim-mall"
+    },
+    {
+      "folder": "011-ELALMAN",
+      "id": "el-alamein"
+    },
+    {
+      "folder": "012-ROYAL MAXIM",
+      "id": "royal-maxim"
+    },
+    {
+      "folder": "020-ROYAL BEACH",
+      "id": "royal-beach"
+    },
+    {
+      "folder": "021-GRAND HIEGHTS",
+      "id": "grand-heights"
+    },
+    {
+      "folder": "022-JEERA",
+      "id": "jeera"
+    },
+    {
+      "folder": "023-JEWAR",
+      "id": "jewar"
+    },
+    {
+      "folder": "024-GHAD",
+      "id": "al-ghad"
+    },
+    {
+      "folder": "025-AL RAEDA",
+      "id": "al-raeda"
+    },
+    {
+      "folder": "026-FAMILY PARK",
+      "id": "family-park"
+    }
+  ]
+}
