@@ -330,6 +330,7 @@
     .tb-cell:first-child{border-left:0}
     .tb-project{flex:1 1 auto;min-width:260px}
     .tb-location{flex:0 1 320px;min-width:220px}
+    .tb-cell-empty{display:none}
     .tb-label{display:block;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--flare);margin-bottom:5px}
     .tb-value{display:block;font-size:.82rem;color:var(--white);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .tb-value.meta-change{animation:hero-meta-in .42s ease both}
@@ -641,8 +642,8 @@
       .modal-card{min-height:100vh}
       .modal-gallery{grid-template-columns:1fr}
       .tb-row{flex-wrap:wrap}
-      .tb-cell{border-left:0!important;border-right:0!important;flex:1 1 50%;border-top:1px solid rgba(242,239,230,.18)}
-      .tb-controls{flex:1 1 100%;justify-content:space-between;border-top:1px solid rgba(242,239,230,.18);padding-top:14px}
+      .tb-project,.tb-location{display:none}
+      .tb-controls{flex:1 1 100%;justify-content:space-between;border-top:0;border-left:0!important;border-right:0!important;padding-top:0}
     }
     @media (prefers-reduced-motion:reduce){
       *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
@@ -2297,9 +2298,9 @@ if (typeof L === "undefined") {
       },HERO_DURATION_MS);
     }
     const heroProjects = [
+      {name:"",nameAr:"",location:"",locationAr:""},
       {name:"Jeddah Center Development",nameAr:"تطوير وسط جدة",location:"Jeddah, KSA",locationAr:"جدة، السعودية"},
-      {name:"Shaden Resort",nameAr:"منتجع شادن",location:"Al Ula, KSA",locationAr:"العلا، السعودية"},
-      {name:"BIM & Digital Twin Modeling",nameAr:"نمذجة BIM والتوأم الرقمي",location:"Riyadh, KSA",locationAr:"الرياض، السعودية"}
+      {name:"Shaden Resort",nameAr:"منتجع شادن",location:"Al Ula, KSA",locationAr:"العلا، السعودية"}
     ];
 
     function updateHeroMetadata(){
@@ -2307,6 +2308,9 @@ if (typeof L === "undefined") {
       if(!project) return;
       const nameNode=$("#heroProjectName");
       const locationNode=$("#heroProjectLocation");
+      const hasProject=Boolean(project.name);
+      document.querySelector(".tb-project")?.classList.toggle("tb-cell-empty",!hasProject);
+      document.querySelector(".tb-location")?.classList.toggle("tb-cell-empty",!hasProject);
       nameNode.textContent=lang==="ar"?project.nameAr:project.name;
       locationNode.textContent=lang==="ar"?project.locationAr:project.location;
       [nameNode,locationNode].forEach(node=>{
