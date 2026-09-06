@@ -23,7 +23,8 @@ window.SNAP_PROJECTS = [
       "images/portfolio/fouka-bay-phase-1/03.webp"
     ],
     "description": "Fouka is a visualization project located in North Coast, Egypt.",
-    "descriptionAr": "فوكة مشروع تصور معماري يقع في الساحل الشمالي، مصر."
+    "descriptionAr": "فوكة مشروع تصور معماري يقع في الساحل الشمالي، مصر.",
+    "video": "videos/portfolio/fouka-bay-phase-1/project-video.mp4"
   },
   {
     "id": "monti-galala-chs",
@@ -51,7 +52,8 @@ window.SNAP_PROJECTS = [
       "images/portfolio/monti-galala-chs/05.webp"
     ],
     "description": "IL Monte Galala is a visualization project located in Ain Sokhna, Egypt.",
-    "descriptionAr": "إل مونتي جلالة مشروع تصور معماري يقع في العين السخنة، مصر."
+    "descriptionAr": "إل مونتي جلالة مشروع تصور معماري يقع في العين السخنة، مصر.",
+    "video": "videos/portfolio/monti-galala-chs/project-video.mp4"
   },
   {
     "id": "the-shore",
@@ -80,7 +82,8 @@ window.SNAP_PROJECTS = [
       "images/portfolio/the-shore/06.webp"
     ],
     "description": "The Shore is a visualization project located in North Coast, Egypt.",
-    "descriptionAr": "شورز مشروع تصور معماري يقع في الساحل الشمالي، مصر."
+    "descriptionAr": "شورز مشروع تصور معماري يقع في الساحل الشمالي، مصر.",
+    "video": "videos/portfolio/the-shore/project-video.mp4"
   },
   {
     "id": "the-view",
@@ -106,7 +109,8 @@ window.SNAP_PROJECTS = [
       "images/portfolio/the-view/03.webp"
     ],
     "description": "The View is a visualization project located in North Coast, Egypt.",
-    "descriptionAr": "ذا ڤيو مشروع تصور معماري يقع في الساحل الشمالي، مصر."
+    "descriptionAr": "ذا ڤيو مشروع تصور معماري يقع في الساحل الشمالي، مصر.",
+    "video": "videos/portfolio/the-view/project-video.mp4"
   },
   {
     "id": "astoria",
@@ -136,7 +140,8 @@ window.SNAP_PROJECTS = [
       "images/portfolio/astoria/07.webp"
     ],
     "description": "Astoria is a visualization project located in 6th October, Egypt.",
-    "descriptionAr": "أستوريا مشروع تصور معماري يقع في السادس من أكتوبر، مصر."
+    "descriptionAr": "أستوريا مشروع تصور معماري يقع في السادس من أكتوبر، مصر.",
+    "video": "videos/portfolio/astoria/project-video.mp4"
   },
   {
     "id": "montaza-quatro-mall",
