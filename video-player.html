@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Video</title>
+  <style>
+    html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#102731}
+    video{display:block;width:100%;height:100%;object-fit:cover;background:#102731}
+    .error{display:none;width:100%;height:100%;place-items:center;padding:24px;box-sizing:border-box;color:#fff;font:14px Arial,sans-serif;text-align:center}
+  </style>
+</head>
+<body>
+  <video id="player" controls preload="metadata" playsinline disablepictureinpicture></video>
+  <div class="error" id="error">Video file not found.</div>
+  <script>
+    (function(){
+      const params=new URLSearchParams(location.search);
+      const player=document.getElementById("player");
+      const source=params.get("src") || "";
+      document.title=params.get("title") || "Project Video";
+      player.src=source;
+      player.addEventListener("error",function(){
+        player.style.display="none";
+        document.getElementById("error").style.display="grid";
+      });
+    })();
+  </script>
+</body>
+</html>
