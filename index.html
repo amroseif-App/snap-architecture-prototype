@@ -425,8 +425,8 @@
     .discipline-tab:focus-visible,.view-toggle button:focus-visible,.map-return-btn:focus-visible{outline:2px solid var(--flare);outline-offset:3px}
     .projects-toolbar{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin-bottom:28px}
     #searchInput{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .filters-group{flex:0 0 auto;min-width:280px}
-    #categoryFilter,#countryFilter{flex:1 1 180px}
+    .filters-group{flex:0 0 auto}
+    #categoryFilter,#countryFilter{flex:1 1 140px;min-width:0}
     .control{
       min-height:50px;padding:0 16px;border:1px solid rgba(242,239,230,.22);border-radius:var(--radius);
       background:rgba(242,239,230,.055);color:#fff;outline:none;font-family:var(--font-body);
@@ -1375,7 +1375,7 @@ if (typeof L === "undefined") {
         contactEyebrow:"Contact",contactTitle:"Start a Project",contactText:"Tell us about your project, location and goals. We will prepare the right architectural and visualization approach for your brief.",contactEmail:"Email the studio",contactCall:"Call Cairo office",contactWhatsApp:"Chat on WhatsApp",contactDirections:"Get directions",
         cairoOffice:"Cairo Office — Egypt",riyadhOffice:"Riyadh Office — Saudi Arabia",officeTag01:"Office 01",officeTag02:"Office 02",cairoAddress:"8 Hob Eldin St., Sefarat, Nasr City, Cairo",name:"Name",company:"Company",email:"Email",phone:"Phone",country:"Country",projectType:"Project Type",message:"Message",sendInquiry:"Send Inquiry",
         footerText:"Architecture, interiors, urban development and visual storytelling across Egypt, Saudi Arabia and the Gulf.",footerNav:"Navigation",footerOffices:"Offices",footerMarkets:"Markets",marketSaudi:"Saudi Arabia",marketEgypt:"Egypt",marketGulf:"Gulf & Arab States",servicesFullPage:"See all services in detail",
-        allCategories:"All Categories",allCountries:"All Countries",results:"projects found",search:"Search projects…",designProjects:"Design",visualizationProjects:"Visualization",mapFilterNote:"Use search and filters to update visible project locations.",mapLoading:"Loading map…",viewMap:"Map",viewList:"List",viewHint:"See every project as an image list",
+        allCategories:"Category",allCountries:"Country",results:"projects found",search:"Search projects…",designProjects:"Design",visualizationProjects:"Visualization",mapFilterNote:"Use search and filters to update visible project locations.",mapLoading:"Loading map…",viewMap:"Map",viewList:"List",viewHint:"See every project as an image list",
         projectName:"Project Name",projectLocation:"Location",viewFullPortfolio:"View full portfolio",
         filtersLabel:"Filters",filterCategory:"Category",filterCountry:"Country",clearFiltersLabel:"Clear filters"
       },
@@ -1397,7 +1397,7 @@ if (typeof L === "undefined") {
         contactEyebrow:"تواصل",contactTitle:"ابدأ مشروعك",contactText:"أخبرنا عن مشروعك وموقعه وأهدافه لنقترح المنهج الأنسب للتصميم والإظهار.",contactEmail:"راسل الاستوديو",contactCall:"اتصل بمكتب القاهرة",contactWhatsApp:"تواصل عبر واتساب",contactDirections:"اعرض الاتجاهات",
         cairoOffice:"مكتب القاهرة — مصر",riyadhOffice:"مكتب الرياض — السعودية",officeTag01:"المكتب 01",officeTag02:"المكتب 02",cairoAddress:"8 شارع حب الدين، السفارات، مدينة نصر، القاهرة",name:"الاسم",company:"الشركة",email:"البريد الإلكتروني",phone:"الهاتف",country:"الدولة",projectType:"نوع المشروع",message:"الرسالة",sendInquiry:"إرسال الطلب",
         footerText:"عمارة وتصميم داخلي وتطوير عمراني وسرد بصري في مصر والسعودية والخليج.",footerNav:"التنقل",footerOffices:"المكاتب",footerMarkets:"الأسواق",marketSaudi:"السعودية",marketEgypt:"مصر",marketGulf:"الخليج والدول العربية",servicesFullPage:"اطّلع على جميع الخدمات بالتفصيل",
-        allCategories:"كل التصنيفات",allCountries:"كل الدول",results:"مشروع",search:"ابحث في المشاريع…",designProjects:"التصميم",visualizationProjects:"الإظهار المعماري",mapFilterNote:"استخدم البحث والتصنيفات لتحديث مواقع المشاريع الظاهرة.",mapLoading:"جارٍ تحميل الخريطة…",viewMap:"خريطة",viewList:"قائمة",viewHint:"اعرض جميع المشاريع في قائمة مصوّرة",
+        allCategories:"التصنيف",allCountries:"الدولة",results:"مشروع",search:"ابحث في المشاريع…",designProjects:"التصميم",visualizationProjects:"الإظهار المعماري",mapFilterNote:"استخدم البحث والتصنيفات لتحديث مواقع المشاريع الظاهرة.",mapLoading:"جارٍ تحميل الخريطة…",viewMap:"خريطة",viewList:"قائمة",viewHint:"اعرض جميع المشاريع في قائمة مصوّرة",
         projectName:"اسم المشروع",projectLocation:"الموقع",viewFullPortfolio:"استعرض المحفظة كاملة",
         filtersLabel:"الفلاتر",filterCategory:"التصنيف",filterCountry:"الدولة",clearFiltersLabel:"مسح الفلاتر"
       }
