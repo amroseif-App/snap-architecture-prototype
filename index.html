@@ -408,21 +408,20 @@
     .projects-area .eyebrow{color:var(--flare)}
     .projects-area .eyebrow::before{background:var(--flare)}
     .projects-area .section-head p{color:rgba(242,239,230,.65)}
-    .filters-group{display:flex;align-items:center}
-    .discipline-tab{appearance:none;border:0;border-left:1px solid rgba(242,239,230,.22);background:transparent;color:rgba(242,239,230,.7);height:50px;padding:0 16px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.78rem;font-weight:600;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;position:relative;transition:color .2s ease}
-    .discipline-tab:first-child{border-left:0}
-    .discipline-tab::after{content:"";position:absolute;left:16px;right:16px;bottom:0;height:2px;background:var(--flare);transform:scaleX(0);transform-origin:left;transition:.2s}
+    .filters-group{display:flex;align-items:center;justify-content:center;flex:1 1 auto;gap:36px}
+    .discipline-tab{appearance:none;border:0;background:transparent;padding:0;cursor:pointer;display:inline-flex;align-items:baseline;gap:9px;font-family:var(--font-display);font-size:clamp(1.05rem,1.8vw,1.4rem);font-weight:500;white-space:nowrap;position:relative;color:var(--discipline-color-dim);transition:color .24s ease}
+    .discipline-tab::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;background:var(--discipline-color);transform:scaleX(0);transform-origin:center;transition:transform .24s ease}
+    .discipline-tab:hover,.discipline-tab.active{color:var(--discipline-color)}
     .discipline-tab:hover::after,.discipline-tab.active::after{transform:scaleX(1)}
-    .discipline-tab.active{color:#fff}
-    .discipline-tab strong{font-family:var(--font-mono);font-weight:500;color:rgba(242,239,230,.5)}
-    .discipline-tab.active strong{color:var(--flare)}
-    html[dir="rtl"] .discipline-tab{border-left:0;border-right:1px solid rgba(242,239,230,.22)}
-    html[dir="rtl"] .discipline-tab:first-child{border-right:0}
+    .discipline-tab[data-discipline="design"]{--discipline-color:#C99062;--discipline-color-dim:rgba(201,144,98,.55)}
+    .discipline-tab[data-discipline="visualization"]{--discipline-color:#9FC1C3;--discipline-color-dim:rgba(159,193,195,.5)}
+    .discipline-tab strong{font-family:var(--font-mono);font-weight:500;font-size:.62rem;color:inherit;opacity:.75}
     .discipline-tab:focus-visible,.view-toggle button:focus-visible,.map-return-btn:focus-visible{outline:2px solid var(--flare);outline-offset:3px}
-    .projects-toolbar{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin-bottom:28px}
+    .projects-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:28px}
     #searchInput{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .filters-group{flex:0 0 auto}
-    #categoryFilter,#countryFilter{flex:1 1 140px;min-width:0}
+    .toolbar-side{display:flex;gap:8px;flex:0 0 auto}
+    #categoryFilter,#countryFilter{flex:0 1 128px;min-width:0;min-height:42px;font-size:.78rem;padding:0 12px}
+    .view-toggle{flex:0 0 auto}
     .control{
       min-height:50px;padding:0 16px;border:1px solid rgba(242,239,230,.22);border-radius:var(--radius);
       background:rgba(242,239,230,.055);color:#fff;outline:none;font-family:var(--font-body);
@@ -1194,10 +1193,9 @@ html[dir="rtl"] .project-popup button{text-align:right}
 
         <div class="projects-toolbar">
           <input id="searchInput" type="search" aria-hidden="true" tabindex="-1">
-          <div class="view-toggle" id="viewToggle">
-            <button id="mapBtn" class="active" aria-label="Map view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n="viewMap">Map</span></button>
-            <button id="listBtn" aria-label="List view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="9" y1="7" x2="20" y2="7"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="17" x2="20" y2="17"/><circle cx="4.5" cy="7" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="17" r="1.2"/></svg><span data-i18n="viewList">List</span></button>
-            <div class="view-hint" data-i18n="viewHint">See every project as an image list</div>
+          <div class="toolbar-side toolbar-side-start">
+            <select class="control" id="categoryFilter" aria-label="Filter by category"></select>
+            <select class="control" id="countryFilter" aria-label="Filter by country"></select>
           </div>
           <div class="filters-group" role="radiogroup" aria-label="Project discipline">
             <button class="discipline-tab active" id="designTab" data-discipline="design" role="radio" aria-checked="true">
@@ -1207,8 +1205,11 @@ html[dir="rtl"] .project-popup button{text-align:right}
               <span data-i18n="visualizationProjects">Visualization</span><strong id="visualizationCount">0</strong>
             </button>
           </div>
-          <select class="control" id="categoryFilter" aria-label="Filter by category"></select>
-          <select class="control" id="countryFilter" aria-label="Filter by country"></select>
+          <div class="view-toggle" id="viewToggle">
+            <button id="mapBtn" class="active" aria-label="Map view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n="viewMap">Map</span></button>
+            <button id="listBtn" aria-label="List view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="9" y1="7" x2="20" y2="7"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="17" x2="20" y2="17"/><circle cx="4.5" cy="7" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="17" r="1.2"/></svg><span data-i18n="viewList">List</span></button>
+            <div class="view-hint" data-i18n="viewHint">See every project as an image list</div>
+          </div>
         </div>
 
         <div class="map-shell" id="mapShell">
