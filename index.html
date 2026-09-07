@@ -408,22 +408,25 @@
     .projects-area .eyebrow{color:var(--flare)}
     .projects-area .eyebrow::before{background:var(--flare)}
     .projects-area .section-head p{color:rgba(242,239,230,.65)}
-    .project-disciplines{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;margin-bottom:18px;background:rgba(242,239,230,.18);border:1px solid rgba(242,239,230,.18)}
-    .discipline-tab{appearance:none;border:0;background:#1B3440;color:rgba(244,241,232,.78);padding:18px 22px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;font-family:var(--font-display);font-size:clamp(1rem,1.8vw,1.3rem);transition:background .24s ease,color .24s ease,transform .24s ease,box-shadow .24s ease}
-    .discipline-tab span{display:flex;align-items:center;gap:10px}
-    .discipline-tab span::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--discipline-color);box-shadow:0 0 0 4px color-mix(in srgb,var(--discipline-color) 18%,transparent)}
-    .discipline-tab strong{font-family:var(--font-mono);font-size:.72rem;font-weight:500;padding:5px 8px;border:1px solid rgba(242,239,230,.2);min-width:34px;text-align:center}
+    .filters-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(242,239,230,.18);border:1px solid rgba(242,239,230,.18)}
+    .discipline-tab{appearance:none;border:0;background:#1B3440;color:rgba(244,241,232,.78);padding:12px 14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:var(--font-body);font-size:.86rem;font-weight:600;transition:background .24s ease,color .24s ease,box-shadow .24s ease}
+    .discipline-tab span{display:flex;align-items:center;gap:8px}
+    .discipline-tab span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--discipline-color);box-shadow:0 0 0 3px color-mix(in srgb,var(--discipline-color) 18%,transparent)}
+    .discipline-tab strong{font-family:var(--font-mono);font-size:.68rem;font-weight:500;padding:3px 6px;border:1px solid rgba(242,239,230,.2);min-width:28px;text-align:center}
     .discipline-tab[data-discipline="design"]{--discipline-color:#A56A52}
     .discipline-tab[data-discipline="visualization"]{--discipline-color:#86A6A8}
-    .discipline-tab:hover:not(.active){background:#25434E;color:#fff;box-shadow:inset 0 -2px 0 var(--flare);transform:translateY(-1px)}
+    .discipline-tab:hover:not(.active){background:#25434E;color:#fff;box-shadow:inset 0 -2px 0 var(--flare)}
     .discipline-tab.active{background:var(--discipline-color);color:#10252E;box-shadow:inset 0 -3px 0 rgba(255,255,255,.28)}
-    .discipline-tab.active span::before{background:#10252E;box-shadow:0 0 0 4px rgba(16,37,46,.14)}
+    .discipline-tab.active span::before{background:#10252E;box-shadow:0 0 0 3px rgba(16,37,46,.14)}
     .discipline-tab.active strong{border-color:rgba(7,19,33,.25)}
     .discipline-tab[data-discipline="design"].active{color:#fff}
-    .discipline-tab[data-discipline="design"].active span::before{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.16)}
+    .discipline-tab[data-discipline="design"].active span::before{background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.16)}
     .discipline-tab[data-discipline="design"].active strong{border-color:rgba(255,255,255,.35)}
     .discipline-tab:focus-visible,.view-toggle button:focus-visible,.map-return-btn:focus-visible{outline:2px solid var(--flare);outline-offset:3px}
-    .projects-toolbar{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:12px;margin-bottom:28px}
+    .projects-toolbar{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin-bottom:28px}
+    #searchInput{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .filters-group{flex:0 0 auto;min-width:280px}
+    #categoryFilter,#countryFilter{flex:1 1 180px}
     .control{
       min-height:50px;padding:0 16px;border:1px solid rgba(242,239,230,.22);border-radius:var(--radius);
       background:rgba(242,239,230,.055);color:#fff;outline:none;font-family:var(--font-body);
@@ -544,9 +547,9 @@
     footer a:hover{color:var(--redline-2)}
     .copyright{border-top:1px solid rgba(242,239,230,.14);margin-top:44px;padding-top:22px;color:rgba(242,239,230,.4);font-family:var(--font-mono);font-size:.76rem}
 
-    .modal{position:fixed;inset:0;background:rgba(11,20,30,.82);z-index:5000;display:none;padding:32px;overflow:auto;isolation:isolate}
-    .modal.show{display:grid;place-items:safe center}
-    .modal-card{background:var(--vellum);width:min(1080px,100%);max-height:92vh;overflow:auto;position:relative;z-index:5001;border:1px solid var(--paper-line)}
+    .modal{position:fixed;inset:0;background:rgba(11,20,30,.82);z-index:5000;display:none;padding:32px;overflow-y:auto;overscroll-behavior:contain;overflow-anchor:none;scrollbar-gutter:stable;isolation:isolate}
+    .modal.show{display:block}
+    .modal-card{background:var(--vellum);width:min(1080px,100%);overflow:visible;margin:0 auto;position:relative;z-index:5001;border:1px solid var(--paper-line)}
     .modal-close{position:sticky;top:16px;float:right;margin:16px;z-index:3;width:44px;height:44px;border:1px solid rgba(242,239,230,.3);background:var(--blueprint);color:var(--vellum);cursor:pointer;font-family:var(--font-mono)}
     .modal-close:hover{background:var(--redline);border-color:var(--redline)}
     .modal-hero{height:380px;background:var(--vellum-2);clear:both}
@@ -605,7 +608,6 @@
       .service-row p{grid-column:1/-1;padding-left:78px}
       html[dir="rtl"] .service-row p{padding-left:0;padding-right:78px}
       .featured-grid,.list-view.active{grid-template-columns:repeat(2,1fr)}
-      .projects-toolbar{grid-template-columns:1fr 1fr}
       .tb-location{flex:1 1 auto}
     }
     @media (max-width:700px){
@@ -615,10 +617,7 @@
     }
     @media (max-width:640px){
       .map-return-btn{display:none!important}
-      .discipline-tab{padding:14px 10px;gap:6px;font-size:.9rem;line-height:1.25}
-      .discipline-tab span{min-width:0;gap:6px}
-      .discipline-tab span::before{width:7px;height:7px;flex:0 0 7px}
-      .discipline-tab strong{flex:0 0 auto;min-width:30px;padding:4px 6px}
+      .filters-group{min-width:0;flex:1 1 100%}
       .container{width:min(100% - 48px,1200px)}
       .section{padding:80px 0}
       .section-head{display:block}
@@ -635,7 +634,6 @@
       .hero .btn{flex:1 1 150px;min-width:0;padding-inline:14px}
       .stats{grid-template-columns:1fr 1fr}
       .about-points,.form-grid{grid-template-columns:1fr}
-      .projects-toolbar{grid-template-columns:1fr}
       #featuredProjects{display:block;min-height:0}
       .footer-grid{grid-template-columns:1fr;gap:32px}
       .modal{padding:0}
@@ -887,6 +885,7 @@ html[dir="rtl"] .featured-card:hover .featured-arrow{transform:scaleX(-1) transl
   aspect-ratio:16/9;
   background:#102731;
   overflow:hidden;
+  contain:layout paint;
 }
 .modal-video-frame iframe,
 .modal-video-frame video{
@@ -1195,24 +1194,23 @@ html[dir="rtl"] .project-popup button{text-align:right}
           <p data-i18n="projectsText">Search the portfolio by project name, country, city or category.</p>
         </div>
 
-        <div class="project-disciplines" role="tablist" aria-label="Project discipline">
-          <button class="discipline-tab active" id="designTab" data-discipline="design" role="tab" aria-selected="true">
-            <span data-i18n="designProjects">Design</span><strong id="designCount">0</strong>
-          </button>
-          <button class="discipline-tab" id="visualizationTab" data-discipline="visualization" role="tab" aria-selected="false">
-            <span data-i18n="visualizationProjects">Visualization</span><strong id="visualizationCount">0</strong>
-          </button>
-        </div>
-
         <div class="projects-toolbar">
-          <input class="control" id="searchInput" type="search" placeholder="Search projects…" aria-label="Search projects">
-          <select class="control" id="categoryFilter" aria-label="Filter by category"></select>
-          <select class="control" id="countryFilter" aria-label="Filter by country"></select>
+          <input id="searchInput" type="search" aria-hidden="true" tabindex="-1">
           <div class="view-toggle" id="viewToggle">
             <button id="mapBtn" class="active" aria-label="Map view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n="viewMap">Map</span></button>
             <button id="listBtn" aria-label="List view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="9" y1="7" x2="20" y2="7"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="17" x2="20" y2="17"/><circle cx="4.5" cy="7" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="17" r="1.2"/></svg><span data-i18n="viewList">List</span></button>
             <div class="view-hint" data-i18n="viewHint">See every project as an image list</div>
           </div>
+          <div class="filters-group" role="radiogroup" aria-label="Project discipline">
+            <button class="discipline-tab active" id="designTab" data-discipline="design" role="radio" aria-checked="true">
+              <span data-i18n="designProjects">Design</span><strong id="designCount">0</strong>
+            </button>
+            <button class="discipline-tab" id="visualizationTab" data-discipline="visualization" role="radio" aria-checked="false">
+              <span data-i18n="visualizationProjects">Visualization</span><strong id="visualizationCount">0</strong>
+            </button>
+          </div>
+          <select class="control" id="categoryFilter" aria-label="Filter by category"></select>
+          <select class="control" id="countryFilter" aria-label="Filter by country"></select>
         </div>
 
         <div class="map-shell" id="mapShell">
@@ -1378,7 +1376,8 @@ if (typeof L === "undefined") {
         cairoOffice:"Cairo Office — Egypt",riyadhOffice:"Riyadh Office — Saudi Arabia",officeTag01:"Office 01",officeTag02:"Office 02",cairoAddress:"8 Hob Eldin St., Sefarat, Nasr City, Cairo",name:"Name",company:"Company",email:"Email",phone:"Phone",country:"Country",projectType:"Project Type",message:"Message",sendInquiry:"Send Inquiry",
         footerText:"Architecture, interiors, urban development and visual storytelling across Egypt, Saudi Arabia and the Gulf.",footerNav:"Navigation",footerOffices:"Offices",footerMarkets:"Markets",marketSaudi:"Saudi Arabia",marketEgypt:"Egypt",marketGulf:"Gulf & Arab States",servicesFullPage:"See all services in detail",
         allCategories:"All Categories",allCountries:"All Countries",results:"projects found",search:"Search projects…",designProjects:"Design",visualizationProjects:"Visualization",mapFilterNote:"Use search and filters to update visible project locations.",mapLoading:"Loading map…",viewMap:"Map",viewList:"List",viewHint:"See every project as an image list",
-        projectName:"Project Name",projectLocation:"Location",viewFullPortfolio:"View full portfolio"
+        projectName:"Project Name",projectLocation:"Location",viewFullPortfolio:"View full portfolio",
+        filtersLabel:"Filters",filterCategory:"Category",filterCountry:"Country",clearFiltersLabel:"Clear filters"
       },
       ar:{
         navHome:"الرئيسية",navAbout:"من نحن",navHowWeWork:"منهج العمل",navLeadership:"فريق القيادة",navServices:"الخدمات",navProjects:"المشاريع",navFeatured:"مشاريع مميزة",navClients:"العملاء",navStudio:"المكتب",navContact:"تواصل معنا",
@@ -1399,7 +1398,8 @@ if (typeof L === "undefined") {
         cairoOffice:"مكتب القاهرة — مصر",riyadhOffice:"مكتب الرياض — السعودية",officeTag01:"المكتب 01",officeTag02:"المكتب 02",cairoAddress:"8 شارع حب الدين، السفارات، مدينة نصر، القاهرة",name:"الاسم",company:"الشركة",email:"البريد الإلكتروني",phone:"الهاتف",country:"الدولة",projectType:"نوع المشروع",message:"الرسالة",sendInquiry:"إرسال الطلب",
         footerText:"عمارة وتصميم داخلي وتطوير عمراني وسرد بصري في مصر والسعودية والخليج.",footerNav:"التنقل",footerOffices:"المكاتب",footerMarkets:"الأسواق",marketSaudi:"السعودية",marketEgypt:"مصر",marketGulf:"الخليج والدول العربية",servicesFullPage:"اطّلع على جميع الخدمات بالتفصيل",
         allCategories:"كل التصنيفات",allCountries:"كل الدول",results:"مشروع",search:"ابحث في المشاريع…",designProjects:"التصميم",visualizationProjects:"الإظهار المعماري",mapFilterNote:"استخدم البحث والتصنيفات لتحديث مواقع المشاريع الظاهرة.",mapLoading:"جارٍ تحميل الخريطة…",viewMap:"خريطة",viewList:"قائمة",viewHint:"اعرض جميع المشاريع في قائمة مصوّرة",
-        projectName:"اسم المشروع",projectLocation:"الموقع",viewFullPortfolio:"استعرض المحفظة كاملة"
+        projectName:"اسم المشروع",projectLocation:"الموقع",viewFullPortfolio:"استعرض المحفظة كاملة",
+        filtersLabel:"الفلاتر",filterCategory:"التصنيف",filterCountry:"الدولة",clearFiltersLabel:"مسح الفلاتر"
       }
     };
 
@@ -1901,6 +1901,8 @@ if (typeof L === "undefined") {
       const link = $("#modalVideoLink");
 
       frame.innerHTML = "";
+      frame.onpointerdown = null;
+      frame.onmousedown = null;
       wrap.classList.remove("show");
 
       // No video authored for this project yet — leave the section hidden
@@ -1918,42 +1920,11 @@ if (typeof L === "undefined") {
       }
 
       if(media.type === "video"){
-        const base = `videos/portfolio/${project.id}`;
-        const candidates = [
-          videoUrl,
-          `${base}.mp4`,
-          `${base}.webm`,
-          `${base}.mov`,
-          `${base}.m4v`,
-          `${base}/video.mp4`,
-          `${base}/project-video.mp4`
-        ];
-
-        const video = document.createElement("video");
-        video.controls = true;
-        video.preload = "metadata";
-        video.playsInline = true;
-        video.disablePictureInPicture = true;
-        video.setAttribute("disablepictureinpicture","");
-
-        let index = 0;
-        function tryNext(){
-          if(index >= candidates.length){
-            frame.innerHTML = `<div style="height:100%;display:grid;place-items:center;color:white;padding:24px;text-align:center">Video file not found.</div>`;
-            link.href = videoUrl;
-            wrap.classList.add("show");
-            return;
-          }
-          const src = candidates[index++];
-          video.src = src;
-          link.href = src;
-          video.load();
-        }
-
-        video.addEventListener("error", tryNext);
-        frame.appendChild(video);
+        // Isolate local playback in its own document. This prevents Firefox's
+        // file:// video focus handling from scrolling the parent project modal.
+        const playerUrl=`video-player.html?src=${encodeURIComponent(videoUrl)}&title=${encodeURIComponent(currentText(project.name,project.nameAr))}`;
+        frame.innerHTML=`<iframe src="${playerUrl}" title="${currentText(project.name,project.nameAr)} video" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
         wrap.classList.add("show");
-        tryNext();
         return;
       }
 
@@ -1973,6 +1944,7 @@ if (typeof L === "undefined") {
     function openModal(id){
       const p=data.projects.find(x=>x.id===id);
       if(!p) return;
+      modalOpenScrollY=window.scrollY;
       lastFocusedEl=document.activeElement;
       const localFolder = `images/portfolio/${p.id}`;
       const localHero = `${localFolder}/1.jpg`;
@@ -1997,7 +1969,9 @@ if (typeof L === "undefined") {
       window.realLeafletMap?.closePopup();
       $("#projectModal").classList.add("show");
       $("#projectModal").setAttribute("aria-hidden","false");
-      modalOpenScrollY=window.scrollY;
+      // The overlay is the only scroll container; reset it for each project.
+      const modalScroller=$("#projectModal");
+      if(modalScroller) modalScroller.scrollTop=0;
       document.body.style.overflow="hidden";
       const closeBtn=$("#modalClose");
       if(closeBtn) closeBtn.focus({preventScroll:true});
@@ -2016,15 +1990,6 @@ if (typeof L === "undefined") {
       if(lastFocusedEl && lastFocusedEl.focus){ lastFocusedEl.focus({preventScroll:true}); lastFocusedEl=null; }
       window.scrollTo(0,modalOpenScrollY);
     }
-
-    // Some mobile browsers reset the page scroll when a native <video>
-    // enters/exits fullscreen while the background is scroll-locked —
-    // reassert the pre-modal scroll position if that happens.
-    ["fullscreenchange","webkitfullscreenchange"].forEach(evt=>{
-      document.addEventListener(evt,()=>{
-        if($("#projectModal").classList.contains("show")) window.scrollTo(0,modalOpenScrollY);
-      });
-    });
 
     let lightboxImages=[];
     let lightboxIndex=0;
